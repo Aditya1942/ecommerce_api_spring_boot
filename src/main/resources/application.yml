@@ -1,0 +1,50 @@
+server:
+  port: 8081 # HTTP (Tomcat) port
+  servlet:
+    contextPath: /api
+
+spring:
+  application:
+    name: ecommerce-api
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 10MB
+      max-file-size: 10MB
+      max-request-size: 200MB
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce_api?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+
+#logging:
+#  level:
+#    -'[com.waypay]': ERROR
+#    -'[org.springframework]': ERROR
+#  file:
+#    path: F:/wavpay/wavpay-ecommerce-api/logs
+#    name: wavpay.log
+
+security:
+  jwt:
+    token:
+      secretkey: secret
+
+file:
+  upload-dir: ./ecommerce-api
+
+springdoc:
+  enabled: true
+  uri-prefix: /api-docs
+  groups:
+    - "com.waypay.ecommerce.api"
