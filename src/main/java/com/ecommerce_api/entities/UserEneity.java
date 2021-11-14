@@ -7,7 +7,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -20,7 +20,7 @@ public class UserEneity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Schema(description = "enter a unique username ", type = "string", example = "name")
+    @Schema(description = "enter a unique username ", type = "string", example = "name") // swagger
     @Column(name = "username", unique = true)
     private String username;
 
@@ -31,6 +31,6 @@ public class UserEneity {
     @Column(name = "role")
     private String role;
 
-    // @CreatedDate
-    // private Date createdAt;
+    @CreatedDate
+    private Date createdAt;
 }

@@ -26,4 +26,8 @@ public class userservice implements userServiceInterface {
         return users.findById(id).orElseThrow(() -> new NotFound("User doesn't exit"));
     }
 
+    @Override
+    public List<UserEneity> getAdmin() {
+        return users.getAdmin();
+    }
 }

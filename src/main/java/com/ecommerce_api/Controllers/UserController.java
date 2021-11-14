@@ -1,7 +1,6 @@
 package com.ecommerce_api.Controllers;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import com.ecommerce_api.Dtos.UserDto;
 import com.ecommerce_api.Models.JwtRequest;
@@ -19,11 +18,17 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
+@SecurityRequirement(name = "auth") // swagger security
 public class UserController {
     @Autowired
     private userservice User;
@@ -90,4 +95,36 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
+
+    @GetMapping("/admins")
+    public ResponseEntity<?> getUser() {
+        try {
+            return ResponseEntity.ok(User.getAdmin());
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        }
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<?> Allusers() {
+        try {
+            return ResponseEntity.ok(User.getAllUsers());
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        }
+
+    }
+
+    @Parameter(name = "id", example = "1", allowEmptyValue = false, required = true, description = "User id")
+    @GetMapping("/user/{id}")
+    public ResponseEntity<?> getUser(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(User.getUser(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        }
+    }
+
 }

@@ -8,4 +8,6 @@ public interface userServiceInterface {
     List<UserEneity> getAllUsers();
 
     UserEneity getUser(Long id);
+
+    List<UserEneity> getAdmin();
 }

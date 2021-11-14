@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/")
-
 @SecurityRequirement(name = "auth")
 public class StatusController {
     @GetMapping("/status")

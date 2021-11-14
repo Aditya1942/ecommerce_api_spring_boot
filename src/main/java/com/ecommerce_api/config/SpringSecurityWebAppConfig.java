@@ -47,7 +47,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
             // -- Swagger UI v3 (OpenAPI)
             "/v3/api-docs/**", "/swagger-ui/**",
             // other public endpoints of your API may be appended to this array
-            "/login", "/register",
+            "/login", "/register", "/status",
             // remove the following if you don't want to protect any urls
             // "/**"
     };
