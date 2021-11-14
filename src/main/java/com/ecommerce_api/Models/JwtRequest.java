@@ -7,10 +7,10 @@ import java.io.Serializable;
 public class JwtRequest implements Serializable {
     private static final long serialVersionUID = 5926468583005150707L;
 
-    @Parameter(name = "Username", example = "aditya")
+    @Parameter(name = "Username", example = "admin")
     private String username;
 
-    @Parameter(name = "Password", example = "password")
+    @Parameter(name = "Password", example = "123456")
     private String password;
 
     // need default constructor for JSON Parsing
@@ -38,4 +38,5 @@ public class JwtRequest implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
