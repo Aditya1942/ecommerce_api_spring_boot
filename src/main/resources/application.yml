@@ -38,7 +38,7 @@ spring:
 security:
   jwt:
     token:
-      secretkey: secret
+      secretkey: 1
 
 file:
   upload-dir: ./ecommerce-api
